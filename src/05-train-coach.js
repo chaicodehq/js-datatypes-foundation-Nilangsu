@@ -49,20 +49,43 @@
  */
 export function findPassenger(passengers, name) {
   // Your code here
+  if(!Array.isArray(passengers)||typeof(name)!=="string"){
+    return undefined;
+  }else{
+    return passengers.find((passengers)=>passengers.name?.toUpperCase()===name.toUpperCase())//The ?. means:"Only call toLowerCase() IF name exists."
+  }
 }
 
 export function getPassengerIndex(passengers, name) {
   // Your code here
+  if(!Array.isArray(passengers)||typeof(name)!=="string"){
+    return -1;
+  }
+  return passengers.findIndex((passengers)=>passengers.name?.toUpperCase()===name.toUpperCase())
 }
 
 export function isAnyWaitlisted(passengers) {
   // Your code here
+  if(!Array.isArray(passengers)||passengers.length===0){
+    return false;
+  }
+  return passengers.some((passengers)=>passengers.status==="waitlisted")
+
 }
 
 export function areAllConfirmed(passengers) {
   // Your code here
+  if(!Array.isArray(passengers)||passengers.length===0){
+    return false;
+  }
+  return passengers.every((passengers)=>passengers.status==="confirmed")
+
 }
 
 export function getWaitlistedPassengers(passengers) {
   // Your code here
+   if(!Array.isArray(passengers)||passengers.length===0){
+    return [];
+  }
+  return passengers.filter((passengers)=>passengers.status==="waitlisted")
 }
